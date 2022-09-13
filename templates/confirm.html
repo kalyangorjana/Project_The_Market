@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Confirmation
+{% endblock title %}
+
+{% block body %}
+<form method="post">
+    <p>Are you sure you want to delete {{product[1]}} and its Id is {{product[0]}}</p>
+    <input type="submit" value="YES" class="btn btn-danger">
+    <a href="/plist" class="btn btn-primary">Back</a>
+</form>
+{% endblock body %}

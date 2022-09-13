@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Product List
+{% endblock title %}
+
+{% block body %}
+<h1>Product List</h1>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+
+    {% for product in productlist %}
+        <tr>
+            <td>{{product[0]}}</td>
+            <td>{{product[1]}}</td>
+            <td>{{product[2]}}</td>
+            <td>{{product[3]}}</td>
+            <td><a href="deleteproduct/{{product[0]}}" class="btn btn-danger">Delete</a></td>
+            <td><a href="updateproduct/{{product[0]}}" class="btn btn-warning">Update</a></td>
+        </tr>
+    {% endfor %}
+</table>"
+{% endblock body %}
