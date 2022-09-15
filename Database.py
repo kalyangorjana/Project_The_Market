@@ -1,13 +1,17 @@
-import mysql.connector as pm
-con = pm.connect(host='localhost', port='3306', user='root', password='Kalyan@123', database='ProductManagementFlask')
+import snowflake.connector as pm
+
+con = pm.connect(user='root', password='Kalyan@123', account='ilb30847.us-east-1', warehouse='THEMARKET',
+                 database='the_market_products', schema='product_data')
+# import mysql.connector as pm
+# con = pm.connect(host='localhost', port='3306', user='root', password='Kalyan@123', database='ProductManagementFlask')
 print('Connected')
 
 cur = con.cursor()
 
 
 def create_table():
-    sqlquery = 'create table if not exists product(productId int primary key auto_increment,productName varchar (100) '\
-               'not Null,productPrice double (15,2) default 0,productDescription varchar(5000))'
+    sqlquery = 'create table if not exists product(productId int primary key autoincrement ,productName varchar (100) ' \
+               'not null,productPrice double,productDescription varchar(5000)) '
     i = cur.execute(sqlquery)
     print(i, 'row affected')
     print('Table is Created')
@@ -58,6 +62,3 @@ def getproductbyid(productId):
 
 def closeDB():
     con.close()
-
-
-    
